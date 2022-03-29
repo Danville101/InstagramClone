@@ -23,3 +23,12 @@ services:
       - POSTGRES_PASSWORD=postgres
     depends_on:
       - db
+  frontend:
+    build: ./frontend
+    command: npm start
+    volumes:
+      - ./frontend:/frontend/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
