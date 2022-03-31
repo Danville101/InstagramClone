@@ -7,7 +7,7 @@ from rest_framework import status
 
 
 
-CREATE_USER_URL = reverse('user:register')
+CREATE_USER_URL = reverse('user:signup')
 
 def create_user(**params):
          return get_user_model().objects.create_user(**params)
@@ -16,6 +16,7 @@ def create_user(**params):
     
 
 class PublicUser(TestCase):
+     """Test User is Created Correctly"""
      
      def setUp(self):
           self.client = APIClient()
@@ -24,11 +25,10 @@ class PublicUser(TestCase):
      def test_create_valid_user_successfully(self):
           
           payload={
-               "username": "dontusename",
+               "username": "dontusename101",
                "email": "dontusereademail@gmail.com",
                "password": "dontuserealpassword101",
-               "first_name": "dontusefirstname",
-               "last_name": "dontuselastname",
+               "fullname": "Dontuse Name"
           }
           
       
