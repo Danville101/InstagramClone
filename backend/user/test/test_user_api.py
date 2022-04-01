@@ -9,13 +9,17 @@ from rest_framework import status
 
 CREATE_USER_URL = reverse('user:signup')
 
+LOGIN_URL = reverse('user:login')
+
+HOME_URL = reverse('user:home')
+
 def create_user(**params):
          return get_user_model().objects.create_user(**params)
     
     
     
 
-class PublicUser(TestCase):
+class CreateUser(TestCase):
      """Test User is Created Correctly"""
      
      def setUp(self):
@@ -41,3 +45,38 @@ class PublicUser(TestCase):
           self.assertNotIn("password", response.data)
           
 
+
+class LoginTestCase(TestCase):
+     """Test if user can log in and is authenticated"""
+     
+     def setUp(self):
+          self.user = create_user(
+              username= "dontusename101",
+               email= "dontusereademail@gmail.com",
+               password= "dontuserealpassword101",
+               fullname= "Dontuse Name"
+          )
+          self.client = APIClient
+          self.client.force_authenticate(user= self.user)
+     
+     
+     def test_login_access_token(self):
+          
+          response = self.client.post(LOGIN_URL)
+          
+          self.assertIn("access", response.data)
+          
+     
+     
+     def test_user_can_asscees_account(self):
+          
+          response = self.client.get(HOME_URL)
+          
+          self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+          
+          
+          
+          
+          
+     
+     
