@@ -12,13 +12,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - "5432"
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "6000:6000"
+     - 6000:5432
+   
 
   backend:
     build: ./backend

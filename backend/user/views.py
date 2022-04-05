@@ -24,6 +24,10 @@ class Register_User(APIView):
           users = UserProfile.objects.all()
           serializer = UserProfileSerializer(users, many=True)
           return Response(serializer.data,)
+     
+     def delete(self, request, format=None):
+          pass
+          
 
 
 class Home(APIView):
