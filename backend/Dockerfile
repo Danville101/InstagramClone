@@ -5,3 +5,6 @@ WORKDIR /backend
 COPY requirements.txt /backend/
 RUN pip install -r requirements.txt
 COPY . /backend/
+RUN mkdir -p /media
+COPY media /media/
+RUN mkdir -p /vol/web/static

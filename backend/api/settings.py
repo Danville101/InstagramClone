@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     "user",
+    "post",
      'rest_framework_simplejwt'
     
 ]
@@ -153,8 +154,10 @@ STATIC_URL = '/static/'
 
 MEDIA_URL="/media/"
 
+MEDIA_ROOT= os.path.join(BASE_DIR, "media")
 
-MEDIA_ROOT=os.path.join(BASE_DIR,"media")
+
+#MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -184,12 +187,12 @@ AUTH_USER_MODEL = 'user.UserProfile'
 # Token for authentication
 
 REST_FRAMEWORK = {
-
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
-    
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
-
 }
 
 

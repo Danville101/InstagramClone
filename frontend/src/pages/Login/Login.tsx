@@ -50,7 +50,7 @@ const Login = () => {
           if(localStorage.getItem("Autherization")){
                navigate("/")
           }
-     },[])
+     })
 
      {if(loggedIn){
           return(<Navigate to="/"/>)
@@ -65,7 +65,7 @@ const Login = () => {
      </form>
 
      <div id="signup-bar">
-          <p>Don't have an account?</p> <a href="#">Sign up</a>
+          <p>Don't have an account?</p> <a href='/signup'>Sign up</a>
           
      </div>
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import Login from './Login'
 import {shallow} from 'enzyme'
-import userEvent from '@testing-library/user-event';
+
 
 describe('Login', () => {
 
@@ -32,14 +32,14 @@ describe('Login', () => {
 
      })
 
-     test(" Login button should be clickable",()=>{
+     test("Login button should be clickable",()=>{
           const handleSubmit = jest.fn();
           const login = wrapper.find("#login")
           login.simulate("click")
           expect(handleSubmit).toHaveBeenCalled
      } )
 
-     test(" Signup Bar",()=>{
+     test("Signup Bar",()=>{
           expect(wrapper.find("#signup-bar").text()).toBe("Don't have an account? Sign up")
      })
 })
